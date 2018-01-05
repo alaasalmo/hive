@@ -1,0 +1,41 @@
+Sql:
+
+sc.stop
+
+import org.apache.spark.SparkConf
+import org.apache.spark.SparkContext
+import org.apache.spark.sql.SQLContext
+
+val conf = new SparkConf()
+val sc = new SparkContext(conf)
+val sqlContext = new SQLContext(sc)
+
+val dfs = sqlContext.read.json("/tmp/employee2.json")
+employee.registerTempTable("employee1")
+sqlContext.sql("select * from employee1").show
+
+
+
+/root/new/employee.json
+
+
+Hive:
+
+import org.apache.spark.sql.hive.HiveContext
+import org.apache.spark.SparkConf
+import org.apache.spark.SparkContext
+
+val sConf = new SparkConf
+val sc = new SparkContext(sConf)
+val hiveCtx = new HiveContext(sc)
+
+val file = hiveCtx.jsonFile("/tmp/employee2.json")
+
+file.regsiterTempTable("employee1")
+
+val emp_name = hiveCtx.sql("select * from employee1")
+emp_name.collect
+
+
+
+
