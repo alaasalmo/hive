@@ -40,6 +40,4 @@ mapped.collect
 create table yahoo_orc_table (date1 STRING, open_price FLOAT, high_price FLOAT, low_price FLOAT, close_price FLOAT, volume INT, adj_price FLOAT) stored as orc LOCATION 'hdfs://sandbox.hortonworks.com:8020/user/root/yahoo_stocks_orc';
 
 
-date string, open_price float, high_price float, low_price float, close_price float, volume int, adj_price float
-
 create table Addresses (name string,street string,city string,state string,zip int) stored as orc LOCATION '/tmp/';
